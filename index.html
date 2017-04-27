@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>SimpleAngular Todo App</title>
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <style media="screen">
+        table,
+        td,
+        th {
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 40%;
+            font-family: 'Arial';
+        }
+
+        th,
+        td {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div ng-controller="myController">
+        <table align="center" style="text-align:center;">
+            <tr>
+                <thead>
+                    <th>Name</th>
+                    <th>Likes</th>
+                    <th>Dislikes</th>
+                    <th>Likes/Dislikes</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="course in courseData">
+                        <td>{{ course.name }}</td>
+                        <td>{{ course.likes }}</td>
+                        <td>{{ course.dislikes }}</td>
+                        <td>
+                            <input type="button" name="" value="Like" ng-click="courseLike(course)">
+                            <input type="button" name="" value="Dislike" ng-click="courseDislike(course)">
+                        </td>
+                    </tr>
+                </tbody>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div class="" ng-controller="salary">
+      <table align="center" style="text-align:center">
+        <tr>
+          <td><p>Rows to display: <input type="number"step="1" min="0" max="5" ng-model="rowCtrl"></p></td>
+        </tr>
+      </table>
+        <table align="center" style="text-align:center">
+            <tr>
+                <thead>
+                    <th>Name</th>
+                    <th>Date of Joining</th>
+                    <th>Gender</th>
+                    <th>Salary</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="emp in employees | orderBy:'doj'">
+                        <td>{{emp.name | uppercase}}</td>
+                        <td>{{emp.doj | date:"dd/MM/yyyy" }}</td>
+                        <td>{{emp.gender | lowercase}}</td>
+                        <td>{{emp.salary | currency:"&#8377; ":0}}</td>
+                    </tr>
+                </tbody>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <br>
+
+        <table align="center" style="text-align:center">
+          <tr>
+            <td><p>Sort By:
+                <select ng-model="sortBy">
+                  <option value="name">Name</option>
+                  <option value="doj">Date of Joining</option>
+                  <option value="gender">Gender</option>
+                  <option value="-salary">Salary</option>
+                </select>
+            </p></td>
+          </tr>
+        </table>
+          <table align="center" style="text-align:center">
+              <tr>
+                  <thead>
+                      <th>Name</th>
+                      <th>Date of Joining</th>
+                      <th>Gender</th>
+                      <th>Salary</th>
+                  </thead>
+                  <tbody>
+                      <tr ng-repeat="emp in employees | orderBy:sortBy">
+                          <td>{{emp.name | uppercase}}</td>
+                          <td>{{emp.doj | date:"dd/MM/yyyy" }}</td>
+                          <td>{{emp.gender | lowercase}}</td>
+                          <td>{{emp.salary | currency:"&#8377; ":0}}</td>
+                      </tr>
+                  </tbody>
+              </tr>
+          </table>
+          <br>
+          <br>
+          <br>
+    </div>
+</body>
+
+</html>
